@@ -59,13 +59,13 @@ class SocialRegisterScreen extends StatelessWidget {
                       children: [
                         Text(
                           'REGISTER',
-                          style: Theme.of(context).textTheme.headline4!.copyWith(
+                          style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                                 color: Colors.black,
                               ),
                         ),
                         Text(
                           'Register now to communicate with friends',
-                          style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                                 color: Colors.grey,
                               ),
                         ),
@@ -79,6 +79,7 @@ class SocialRegisterScreen extends StatelessWidget {
                             if (value!.isEmpty) {
                               return 'please enter your name';
                             }
+                            return null;
                           },
                           label: 'User Name',
                           prefix: Icons.person,
@@ -93,6 +94,7 @@ class SocialRegisterScreen extends StatelessWidget {
                             if (value!.isEmpty) {
                               return 'please enter your email address';
                             }
+                            return null;
                           },
                           label: 'Email Address',
                           prefix: Icons.email_outlined,
@@ -115,6 +117,7 @@ class SocialRegisterScreen extends StatelessWidget {
                             if (value!.isEmpty) {
                               return 'password is too short';
                             }
+                            return null;
                           },
                           label: 'Password',
                           prefix: Icons.lock_outline,
@@ -129,6 +132,7 @@ class SocialRegisterScreen extends StatelessWidget {
                             if (value!.isEmpty) {
                               return 'please enter your phone number';
                             }
+                            return null;
                           },
                           label: 'Phone',
                           prefix: Icons.phone,

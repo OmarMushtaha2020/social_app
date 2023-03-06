@@ -13,8 +13,7 @@ import 'package:flutter_conditional_rendering/conditional.dart';
 class ChatsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-        // SocialCubit.get(context).getUserData();
-        // SocialCubit.get(context).getUsers();
+
         return BlocConsumer<SocialCubit, SocialStates>(
           listener: (context, state) {},
           builder: (context, state) {

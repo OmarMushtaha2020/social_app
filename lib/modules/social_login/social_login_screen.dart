@@ -63,14 +63,14 @@ class SocialLoginScreen extends StatelessWidget {
                         Text(
                           'LOGIN',
                           style:
-                              Theme.of(context).textTheme.headline4!.copyWith(
+                              Theme.of(context).textTheme.headlineMedium!.copyWith(
                                     color: Colors.black,
                                   ),
                         ),
                         Text(
                           'Login now to communicate with friends',
                           style:
-                              Theme.of(context).textTheme.bodyText1!.copyWith(
+                              Theme.of(context).textTheme.bodyLarge!.copyWith(
                                     color: Colors.grey,
                                   ),
                         ),
@@ -84,6 +84,7 @@ class SocialLoginScreen extends StatelessWidget {
                             if (value!.isEmpty) {
                               return 'please enter your email address';
                             }
+                            return null;
                           },
                           label: 'Email Address',
                           prefix: Icons.email_outlined,
@@ -112,6 +113,7 @@ class SocialLoginScreen extends StatelessWidget {
                             if (value!.isEmpty) {
                               return 'password is too short';
                             }
+                            return null;
                           },
                           label: 'Password',
                           prefix: Icons.lock_outline,

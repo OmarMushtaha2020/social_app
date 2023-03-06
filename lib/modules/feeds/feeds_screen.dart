@@ -58,7 +58,7 @@ class FeedsScreen extends StatelessWidget {
                             'communicate with friends',
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle1!
+                                .titleMedium!
                                 .copyWith(color: Colors.white),
                           ),
                         ),
@@ -138,7 +138,7 @@ class FeedsScreen extends StatelessWidget {
                           model.dateTime,
                           style: Theme.of(context)
                               .textTheme
-                              .caption!
+                              .bodySmall!
                               .copyWith(height: 1.4),
                         ),
                       ],
@@ -164,61 +164,8 @@ class FeedsScreen extends StatelessWidget {
               ),
               Text(
                 model.text,
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(
-              //     bottom: 10.0,
-              //     top: 5.0,
-              //   ),
-              //   child: Container(
-              //     width: double.infinity,
-              //     child: Wrap(
-              //       children: [
-              //         Padding(
-              //           padding: const EdgeInsetsDirectional.only(
-              //             end: 6.0,
-              //           ),
-              //           child: Container(
-              //             height: 25.0,
-              //             child: MaterialButton(
-              //               onPressed: () {},
-              //               minWidth: 1.0,
-              //               padding: EdgeInsets.zero,
-              //               child: Text(
-              //                 '#software',
-              //                 style:
-              //                     Theme.of(context).textTheme.caption.copyWith(
-              //                           color: defaultColor,
-              //                         ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //         Padding(
-              //           padding: const EdgeInsetsDirectional.only(
-              //             end: 6.0,
-              //           ),
-              //           child: Container(
-              //             height: 25.0,
-              //             child: MaterialButton(
-              //               onPressed: () {},
-              //               minWidth: 1.0,
-              //               padding: EdgeInsets.zero,
-              //               child: Text(
-              //                 '#flutter',
-              //                 style:
-              //                     Theme.of(context).textTheme.caption.copyWith(
-              //                           color: defaultColor,
-              //                         ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
               if (model.postImage != '')
                 Padding(
                   padding: const EdgeInsetsDirectional.only(top: 15),
@@ -258,7 +205,7 @@ class FeedsScreen extends StatelessWidget {
                               ),
                               Text(
                                 '${SocialCubit.get(context).likes[index]}',
-                                style: Theme.of(context).textTheme.caption,
+                                style: Theme.of(context).textTheme.bodySmall,
                               )
                             ],
                           ),
@@ -285,7 +232,7 @@ class FeedsScreen extends StatelessWidget {
                               ),
                               Text(
                                 ' comment',
-                                style: Theme.of(context).textTheme.caption,
+                                style: Theme.of(context).textTheme.bodySmall,
                               ),
                             ],
                           ),
@@ -324,7 +271,7 @@ class FeedsScreen extends StatelessWidget {
                           Text(
                             'write a comment ...',
                             style:
-                                Theme.of(context).textTheme.caption!.copyWith(),
+                                Theme.of(context).textTheme.bodySmall!.copyWith(),
                           ),
                         ],
                       ),
@@ -344,7 +291,7 @@ class FeedsScreen extends StatelessWidget {
                         ),
                         Text(
                           'Like',
-                          style: Theme.of(context).textTheme.caption,
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
                     ),

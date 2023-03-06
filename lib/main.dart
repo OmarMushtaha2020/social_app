@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:social/firebase_options.dart';
 import 'package:social/layout/cubit/cubit.dart';
 import 'package:social/layout/social_layout.dart';
@@ -12,7 +11,6 @@ import 'package:social/shared/cubit/cubit.dart';
 import 'package:social/shared/cubit/states.dart';
 import 'package:social/shared/styles/themes.dart';
 
-import 'package:splash_screen_view/SplashScreenView.dart';
 
 import 'shared/components/componets.dart';
 import 'shared/components/constants.dart';

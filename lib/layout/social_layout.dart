@@ -15,33 +15,13 @@ class SocialLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SocialCubit, SocialStates>(
       listener: (context, state) {
-        // if (state is SocialLogOutErrorState) {
-        //   showToast(
-        //     text: state.error,
-        //     state: ToastStates.ERROR,
-        //   );
-        // }
-        // if(state is SocialLogOutSuccessState)
-        // {
-        //   CacheHelper.removeData(
-        //     key: 'uId',
-        //   ).then((value)
-        //   {
-        //     navigateAndFinish(
-        //       context,
-        //       SocialLoginScreen(),
-        //     );
-        //   });
-        // }
         if (state is SocialNewPostState) {
           navigateTo(
             context,
             NewPostScreen(),
           );
         }
-        // if (state is SocialLogOutSuccessState){
-        //   CacheHelper.removeData(key: 'uId',);
-        // }
+
       },
       builder: (context, state) {
         var cubit = SocialCubit.get(context);
@@ -49,21 +29,6 @@ class SocialLayout extends StatelessWidget {
           appBar: AppBar(
             title: Text(cubit.titles[cubit.currentIndex]),
             actions: [
-              // IconButton(
-              //   icon: Icon(IconBroken.Notification),
-              //   onPressed: () {},
-              // ),
-              // IconButton(
-              //   icon: Icon(IconBroken.Search),
-              //   onPressed: () {},
-              // ),
-              // IconButton(
-              //   icon: Icon(IconBroken.Logout),
-              //   onPressed: () {
-              //     // signOut(context);
-              //     cubit.logOut(context);
-              //   },
-              // ),
               cubit.userModel != null
                   ? InkWell(
                       onTap: () {

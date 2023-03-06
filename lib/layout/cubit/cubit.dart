@@ -377,7 +377,7 @@ Future  <void> createPost({
 
   void sendMessage({
     required String receiverId,
-    required String dateTime,
+    required var dateTime,
     required String text,
   }) {
     MessageModel model = MessageModel(

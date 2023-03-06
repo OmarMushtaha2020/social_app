@@ -21,7 +21,6 @@ import 'package:social/shared/components/componets.dart';
 import 'package:social/shared/components/constants.dart';
 import 'package:social/shared/network/local/cache_helper.dart';
 
-
 class SocialCubit extends Cubit<SocialStates> {
   SocialCubit() : super(SocialInitialState());
 
@@ -208,7 +207,7 @@ class SocialCubit extends Cubit<SocialStates> {
     emit(SocialRemovePostImageState());
   }
 
- Future <void> uploadPostImage({
+  Future<void> uploadPostImage({
     required String dateTime,
     required String text,
   }) async {
@@ -226,8 +225,8 @@ class SocialCubit extends Cubit<SocialStates> {
           dateTime: dateTime,
           postImage: value,
         ).then((value) {
-         getPosts();
-         currentIndex=0;
+          getPosts();
+          currentIndex = 0;
         });
       }).catchError((error) {
         emit(SocialCreatePostErrorState());
@@ -237,7 +236,7 @@ class SocialCubit extends Cubit<SocialStates> {
     });
   }
 
-Future  <void> createPost({
+  Future<void> createPost({
     required String dateTime,
     required String text,
     String? postImage,
@@ -279,7 +278,6 @@ Future  <void> createPost({
           postsId.add(element.id);
           posts.add(PostModel.fromJson(element.data()));
           emit(SocialGetPostsSuccessState());
-
         }).catchError((error) {});
       });
     }).catchError((error) {
@@ -287,6 +285,7 @@ Future  <void> createPost({
       emit(SocialGetPostsErrorState(error.toString()));
     });
   }
+
   Future<void> handleRefresh() {
     final Completer<void> completer = Completer<void>();
     Timer(const Duration(seconds: 3), () {
@@ -366,7 +365,6 @@ Future  <void> createPost({
           if (element.data()['uId'] != userModel!.uId)
             users.add(SocialUserModel.fromJson(element.data()));
           emit(SocialGetAllUsersSuccessState());
-
         });
       }).catchError((error) {
         print(error.toString());

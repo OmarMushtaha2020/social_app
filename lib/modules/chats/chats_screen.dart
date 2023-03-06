@@ -13,28 +13,27 @@ import 'package:flutter_conditional_rendering/conditional.dart';
 class ChatsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-        return BlocConsumer<SocialCubit, SocialStates>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            return Conditional.single(
-              context: context,
-              conditionBuilder: (context) => SocialCubit.get(context).users.isNotEmpty,
-              widgetBuilder: (context) => ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) => buildChatItem(
-                    SocialCubit.get(context).users[index], context),
-                separatorBuilder: (context, index) => myDivider(),
-                itemCount: SocialCubit.get(context).users.length,
-              ),
-              fallbackBuilder: (context) => Center(
-                  child: AdaptiveIndicator(
-                    os: getOS(),
-                  )),
-            );
-          },
+    return BlocConsumer<SocialCubit, SocialStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Conditional.single(
+          context: context,
+          conditionBuilder: (context) =>
+              SocialCubit.get(context).users.isNotEmpty,
+          widgetBuilder: (context) => ListView.separated(
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) =>
+                buildChatItem(SocialCubit.get(context).users[index], context),
+            separatorBuilder: (context, index) => myDivider(),
+            itemCount: SocialCubit.get(context).users.length,
+          ),
+          fallbackBuilder: (context) => Center(
+              child: AdaptiveIndicator(
+            os: getOS(),
+          )),
         );
-
+      },
+    );
   }
 
   Widget buildChatItem(SocialUserModel model, context) => InkWell(

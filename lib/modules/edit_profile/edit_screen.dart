@@ -6,7 +6,6 @@ import '../../layout/cubit/cubit.dart';
 import '../../shared/components/componets.dart';
 import '../../shared/styles/icon_broken.dart';
 
-
 class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

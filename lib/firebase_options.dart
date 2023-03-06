@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '175673870280',
     projectId: 'social-4140c',
     storageBucket: 'social-4140c.appspot.com',
-    iosClientId: '175673870280-4j6rv049p99uq6c1erievuk62ntaq7f7.apps.googleusercontent.com',
+    iosClientId:
+        '175673870280-4j6rv049p99uq6c1erievuk62ntaq7f7.apps.googleusercontent.com',
     iosBundleId: 'com.example.social',
   );
 }

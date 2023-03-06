@@ -67,7 +67,6 @@ Widget defaultFormField({
       ),
     );
 
-
 PreferredSizeWidget defaultAppBar({
   required BuildContext context,
   String? title,

@@ -1,5 +1,4 @@
-class CommentModel
-{
+class CommentModel {
   late String name;
   late String uId;
   late String dateTime;
@@ -8,27 +7,23 @@ class CommentModel
   CommentModel({
     required this.name,
     required this.uId,
-
     required this.dateTime,
     required this.text,
-
   });
 
-  CommentModel.fromJson(Map<String, dynamic> json)
-  {
+  CommentModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     uId = json['uId'];
     dateTime = json['dateTime'];
     text = json['text'];
   }
 
-  Map<String, dynamic> toMap()
-  {
+  Map<String, dynamic> toMap() {
     return {
-      'name':name,
-      'uId':uId,
-      'dateTime':dateTime,
-      'text':text,
+      'name': name,
+      'uId': uId,
+      'dateTime': dateTime,
+      'text': text,
     };
   }
 }

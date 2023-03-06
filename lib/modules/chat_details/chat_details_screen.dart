@@ -153,7 +153,7 @@ class ChatDetailsScreen extends StatelessWidget {
                                       SocialCubit.get(context).sendMessage(
                                         receiverId: userModel.uId,
                                         text: messageController.text,
-                                        dateTime:DateTime.now().toString(),
+                                        dateTime: DateTime.now().toString(),
                                       );
                                       messageController.clear();
                                     },

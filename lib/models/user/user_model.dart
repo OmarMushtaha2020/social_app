@@ -1,8 +1,7 @@
-
 class UserModels {
- late final int  id;
- late final String name;
- late final String phone;
+  late final int id;
+  late final String name;
+  late final String phone;
 
   UserModels({
     required this.id,

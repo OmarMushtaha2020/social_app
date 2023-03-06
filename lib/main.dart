@@ -11,7 +11,6 @@ import 'package:social/shared/cubit/cubit.dart';
 import 'package:social/shared/cubit/states.dart';
 import 'package:social/shared/styles/themes.dart';
 
-
 import 'shared/components/componets.dart';
 import 'shared/components/constants.dart';
 import 'shared/network/local/cache_helper.dart';
@@ -36,25 +35,29 @@ void main() async {
   token = await FirebaseMessaging.instance.getToken();
   print(' token is :  $token');
   // foreground fcm
-  FirebaseMessaging.onMessage.listen((event)
-  {
+  FirebaseMessaging.onMessage.listen((event) {
     print('on message');
     print(event.data.toString());
 
-    showToast(text: 'on message', state: ToastStates.SUCCESS,);
+    showToast(
+      text: 'on message',
+      state: ToastStates.SUCCESS,
+    );
   });
   // when click on notification to open app
-  FirebaseMessaging.onMessageOpenedApp.listen((event)
-  {
+  FirebaseMessaging.onMessageOpenedApp.listen((event) {
     print('on message opened app');
     print(event.data.toString());
-    showToast(text: 'on message opened app', state: ToastStates.SUCCESS,);
+    showToast(
+      text: 'on message opened app',
+      state: ToastStates.SUCCESS,
+    );
   });
   // background fcm
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
-  bool ?isDark = CacheHelper.getData(key: 'isDark');
+  bool? isDark = CacheHelper.getData(key: 'isDark');
   Widget? widget;
   uId = CacheHelper.getData(key: 'uId');
   if (uId != null) {
@@ -69,7 +72,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final bool ?isDark;
+  final bool? isDark;
   final Widget? startWidget;
 
   MyApp({
@@ -84,8 +87,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (BuildContext context) => AppCubit()
               ..changeAppMode(
-                // fromShared: isDark!,
-              ),
+                  // fromShared: isDark!,
+                  ),
           ),
           BlocProvider(
             create: (BuildContext context) => SocialCubit()
@@ -103,8 +106,7 @@ class MyApp extends StatelessWidget {
               themeMode: AppCubit.get(context).isDark!
                   ? ThemeMode.dark
                   : ThemeMode.light,
-              home:
-              startWidget,
+              home: startWidget,
             );
           },
         ));

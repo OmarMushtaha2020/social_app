@@ -7,7 +7,6 @@ import '../../layout/cubit/states.dart';
 import '../../shared/components/componets.dart';
 import '../../shared/styles/icon_broken.dart';
 
-
 class NewPostScreen extends StatelessWidget {
   var textController = TextEditingController();
 
@@ -20,7 +19,7 @@ class NewPostScreen extends StatelessWidget {
           SocialCubit.get(context).removePostImage();
           textController.clear();
           Navigator.pop(context);
-        }else if (state is SocialCreatePostSuccessState ){
+        } else if (state is SocialCreatePostSuccessState) {
           textController.clear();
           Navigator.pop(context);
         }
@@ -32,16 +31,18 @@ class NewPostScreen extends StatelessWidget {
             defaultTextButton(
                 function: () {
                   var now = DateTime.now();
-                  String formattedDate = DateFormat.MMMEd().add_jm().format(now);
+                  String formattedDate =
+                      DateFormat.MMMEd().add_jm().format(now);
                   if (SocialCubit.get(context).postImage == null) {
-                    SocialCubit.get(context).createPost(
+                    SocialCubit.get(context)
+                        .createPost(
                       dateTime: formattedDate.toString(),
                       text: textController.text,
-                    ).then((value){
+                    )
+                        .then((value) {
                       SocialCubit.get(context).getPosts();
-                      SocialCubit.get(context).currentIndex=0;
+                      SocialCubit.get(context).currentIndex = 0;
                     });
-
                   } else {
                     SocialCubit.get(context).uploadPostImage(
                       dateTime: formattedDate.toString(),
@@ -66,14 +67,14 @@ class NewPostScreen extends StatelessWidget {
                     CircleAvatar(
                       radius: 25.0,
                       backgroundImage: NetworkImage(
-                          SocialCubit.get(context).userModel?.image??""),
+                          SocialCubit.get(context).userModel?.image ?? ""),
                     ),
                     const SizedBox(
                       width: 15.0,
                     ),
                     Expanded(
                       child: Text(
-                        '${SocialCubit.get(context).userModel?.name??""}',
+                        '${SocialCubit.get(context).userModel?.name ?? ""}',
                         style: const TextStyle(
                           height: 1.4,
                         ),
@@ -86,7 +87,7 @@ class NewPostScreen extends StatelessWidget {
                   controller: textController,
                   decoration: InputDecoration(
                       hintText:
-                          'What is on your mind ${SocialCubit.get(context).userModel?.name??""}',
+                          'What is on your mind ${SocialCubit.get(context).userModel?.name ?? ""}',
                       border: InputBorder.none),
                 )),
                 const SizedBox(
@@ -114,7 +115,6 @@ class NewPostScreen extends StatelessWidget {
                         icon: const CircleAvatar(
                           radius: 20,
                           child: Icon(
-
                             IconBroken.Delete,
                             size: 18,
                           ),

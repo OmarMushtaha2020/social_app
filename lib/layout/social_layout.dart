@@ -9,7 +9,6 @@ import 'package:social/shared/components/componets.dart';
 import 'package:social/shared/components/constants.dart';
 import 'package:social/shared/styles/icon_broken.dart';
 
-
 class SocialLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,6 @@ class SocialLayout extends StatelessWidget {
             NewPostScreen(),
           );
         }
-
       },
       builder: (context, state) {
         var cubit = SocialCubit.get(context);
@@ -38,16 +36,15 @@ class SocialLayout extends StatelessWidget {
                         radius: 24,
                         child: CircleAvatar(
                           radius: 24,
-                          backgroundImage:
-                              NetworkImage(cubit.userModel!.image),
+                          backgroundImage: NetworkImage(cubit.userModel!.image),
                         ),
                       ),
                     )
                   : Center(
-                    child: AdaptiveIndicator(
+                      child: AdaptiveIndicator(
                         os: getOS(),
                       ),
-                  ),
+                    ),
               const SizedBox(
                 width: 5,
               ),
@@ -78,7 +75,6 @@ class SocialLayout extends StatelessWidget {
                 ),
                 label: 'Post',
               ),
-
               BottomNavigationBarItem(
                 icon: Icon(
                   IconBroken.Setting,

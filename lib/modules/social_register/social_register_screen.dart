@@ -12,8 +12,6 @@ import '../../shared/network/local/cache_helper.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
 
-
-
 class SocialRegisterScreen extends StatelessWidget {
   var formKey = GlobalKey<FormState>();
   var nameController = TextEditingController();
@@ -59,15 +57,19 @@ class SocialRegisterScreen extends StatelessWidget {
                       children: [
                         Text(
                           'REGISTER',
-                          style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium!
+                              .copyWith(
                                 color: Colors.black,
                               ),
                         ),
                         Text(
                           'Register now to communicate with friends',
-                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                color: Colors.grey,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                    color: Colors.grey,
+                                  ),
                         ),
                         const SizedBox(
                           height: 30.0,
@@ -75,7 +77,7 @@ class SocialRegisterScreen extends StatelessWidget {
                         defaultFormField(
                           controller: nameController,
                           keyboardType: TextInputType.name,
-                          validate: (String ?value) {
+                          validate: (String? value) {
                             if (value!.isEmpty) {
                               return 'please enter your name';
                             }
@@ -113,7 +115,7 @@ class SocialRegisterScreen extends StatelessWidget {
                             SocialRegisterCubit.get(context)
                                 .changePasswordVisibility();
                           },
-                          validate: (String ?value) {
+                          validate: (String? value) {
                             if (value!.isEmpty) {
                               return 'password is too short';
                             }
@@ -128,7 +130,7 @@ class SocialRegisterScreen extends StatelessWidget {
                         defaultFormField(
                           controller: phoneController,
                           keyboardType: TextInputType.phone,
-                          validate: (String ?value) {
+                          validate: (String? value) {
                             if (value!.isEmpty) {
                               return 'please enter your phone number';
                             }
@@ -142,7 +144,8 @@ class SocialRegisterScreen extends StatelessWidget {
                         ),
                         Conditional.single(
                           context: context,
-                          conditionBuilder:(context) =>  state is! SocialRegisterLoadingState,
+                          conditionBuilder: (context) =>
+                              state is! SocialRegisterLoadingState,
                           widgetBuilder: (context) => defaultButton(
                             function: () {
                               if (formKey.currentState!.validate()) {
@@ -157,11 +160,10 @@ class SocialRegisterScreen extends StatelessWidget {
                             text: 'register',
                             isUpperCase: true,
                           ),
-                          fallbackBuilder: (context) =>
-                              Center(
-                                  child: AdaptiveIndicator(
-                                    os: getOS(),
-                                  )),
+                          fallbackBuilder: (context) => Center(
+                              child: AdaptiveIndicator(
+                            os: getOS(),
+                          )),
                         ),
                       ],
                     ),

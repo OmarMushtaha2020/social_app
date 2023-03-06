@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
@@ -12,7 +11,6 @@ import '../../layout/cubit/states.dart';
 import '../../shared/styles/colors.dart';
 import '../../shared/styles/icon_broken.dart';
 
-
 class FeedsScreen extends StatelessWidget {
   final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
       GlobalKey<LiquidPullToRefreshState>();
@@ -25,12 +23,13 @@ class FeedsScreen extends StatelessWidget {
         return Conditional.single(
           context: context,
           conditionBuilder: (context) =>
-              SocialCubit.get(context).posts.isNotEmpty,widgetBuilder: (context) => LiquidPullToRefresh(
+              SocialCubit.get(context).posts.isNotEmpty,
+          widgetBuilder: (context) => LiquidPullToRefresh(
             key: _refreshIndicatorKey,
             onRefresh: SocialCubit.get(context).handleRefresh,
             showChildOpacityTransition: false,
             color: Theme.of(context).scaffoldBackgroundColor,
-             backgroundColor: defaultColor,
+            backgroundColor: defaultColor,
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Column(
@@ -270,8 +269,10 @@ class FeedsScreen extends StatelessWidget {
                           ),
                           Text(
                             'write a comment ...',
-                            style:
-                                Theme.of(context).textTheme.bodySmall!.copyWith(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall!
+                                .copyWith(),
                           ),
                         ],
                       ),

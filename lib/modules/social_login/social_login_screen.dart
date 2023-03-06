@@ -62,10 +62,12 @@ class SocialLoginScreen extends StatelessWidget {
                       children: [
                         Text(
                           'LOGIN',
-                          style:
-                              Theme.of(context).textTheme.headlineMedium!.copyWith(
-                                    color: Colors.black,
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium!
+                              .copyWith(
+                                color: Colors.black,
+                              ),
                         ),
                         Text(
                           'Login now to communicate with friends',
@@ -137,11 +139,10 @@ class SocialLoginScreen extends StatelessWidget {
                             text: 'login',
                             isUpperCase: true,
                           ),
-                          fallbackBuilder: (context) =>
-                              Center(
-                                  child: AdaptiveIndicator(
-                                    os: getOS(),
-                                  )),
+                          fallbackBuilder: (context) => Center(
+                              child: AdaptiveIndicator(
+                            os: getOS(),
+                          )),
                         ),
                         const SizedBox(
                           height: 15.0,

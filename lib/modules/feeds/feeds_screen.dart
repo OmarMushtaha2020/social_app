@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:social/models/social_app/post_model.dart';
+import 'package:social/modules/comment/comment_screen.dart';
 import 'package:social/shared/adaptive/adaptivw_indicator.dart';
 import 'package:social/shared/components/constants.dart';
 
@@ -276,7 +277,15 @@ class FeedsScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        SocialCubit.get(context).getAllComment("id").then((value){
+                          Future.delayed(Duration(microseconds: 1000)).then((value) {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CommentScreen()));
+
+                          });
+
+                        });
+                      },
                     ),
                   ),
                   InkWell(

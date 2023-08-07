@@ -309,7 +309,7 @@ class SocialCubit extends Cubit<SocialStates> {
     });
   }
 
-  void likePost(String postId) {
+  Future<void> likePost(String postId) async {
     FirebaseFirestore.instance
         .collection('posts')
         .doc(postId)
@@ -327,12 +327,27 @@ class SocialCubit extends Cubit<SocialStates> {
   }
 
 // create Comment
+  List<CommentModel> commentModel = [];
 
-  void createComment({
+ Future<void> getAllComment(String id) async {
+    commentModel=[];
+    emit(SocialClearCommentSuccessState());
+    FirebaseFirestore.instance.collection("posts").doc("x8RdJOMJKqh64ug5Zj2K").collection("comment").get().then((value) {
+value.docs.forEach((element) {
+  commentModel.add(CommentModel.fromJson(element.data()));
+
+});
+emit(SocialGetCommentSuccessState());
+    }).catchError((error){
+      emit(SocialGetCommentErrorState());
+    });
+}
+  Future<void> createComment({
     required String dateTime,
     required String text,
+    required String image,
     String? postId,
-  }) {
+  }) async {
     emit(SocialCreateCommentLoadingState());
 
     CommentModel model = CommentModel(
@@ -346,9 +361,10 @@ class SocialCubit extends Cubit<SocialStates> {
         .collection('posts')
         .doc(postId)
         .collection('comment')
-        .doc(userModel!.uId)
-        .set(model.toMap())
+
+        .add(model.toMap())
         .then((value) {
+      getAllComment("x8RdJOMJKqh64ug5Zj2K");
       emit(SocialCreateCommentSuccessState());
     }).catchError((error) {
       emit(SocialCreateCommentErrorState());
@@ -469,4 +485,5 @@ class SocialCubit extends Cubit<SocialStates> {
       }
     });
   }
+
 }

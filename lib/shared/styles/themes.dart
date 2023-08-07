@@ -50,6 +50,9 @@ ThemeData darkTheme = ThemeData(
 ThemeData lightTheme = ThemeData(
   primarySwatch: defaultColor,
   scaffoldBackgroundColor: Colors.white,
+  bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: Colors.transparent
+  ),
   appBarTheme: AppBarTheme(
     titleSpacing: 20.0,
     systemOverlayStyle: SystemUiOverlayStyle(

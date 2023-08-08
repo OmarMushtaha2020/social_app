@@ -271,18 +271,26 @@ FirebaseFirestore.instance.collection("posts").doc(value.id).update({"idPost":va
   List<String> postsId = [];
   List<int> likes = [];
   List<int> comments = [];
+  List <int>commentNumber=[];
 
   void getPosts() {
     FirebaseFirestore.instance.collection('posts').get().then((value) {
       posts = [];
+      likes=[];
+      commentNumber=[];
       value.docs.forEach((element) {
         element.reference.collection('likes').get().then((value) {
           likes.add(value.docs.length);
+
           emit(SocialGetPostLikeState());
           postsId.add(element.id);
           posts.add(PostModel.fromJson(element.data()));
           emit(SocialGetPostsSuccessState());
         }).catchError((error) {});
+        element.reference.collection('comment').get().then((value) {
+
+          commentNumber.add(value.docs.length);
+        });
       });
     }).catchError((error) {
       print(error.toString());
@@ -314,6 +322,7 @@ FirebaseFirestore.instance.collection("posts").doc(value.id).update({"idPost":va
   }
 
   Future<void> likePost(String postId) async {
+
     FirebaseFirestore.instance
         .collection('posts')
         .doc(postId)
@@ -322,7 +331,7 @@ FirebaseFirestore.instance.collection("posts").doc(value.id).update({"idPost":va
         .set({
       'like': true,
     }).then((value) {
-      getPosts();
+      print("object");
 
       emit(SocialLikePostSuccessState());
     }).catchError((error) {
@@ -373,6 +382,7 @@ print(commentModel.length);
         .add(model.toMap())
         .then((value) {
       getAllComment("${postId}");
+      getPosts();
       emit(SocialCreateCommentSuccessState());
     }).catchError((error) {
       emit(SocialCreateCommentErrorState());
@@ -385,6 +395,7 @@ print(commentModel.length);
     emit(SocialLoadingGetAllUserDataState());
     if (users.length == 0) {
       FirebaseFirestore.instance.collection('users').get().then((value) {
+        users=[];
         value.docs.forEach((element) {
           if (element.data()['uId'] != userModel!.uId)
             users.add(SocialUserModel.fromJson(element.data()));

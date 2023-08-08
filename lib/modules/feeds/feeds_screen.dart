@@ -231,7 +231,7 @@ class FeedsScreen extends StatelessWidget {
                                 width: 5.0,
                               ),
                               Text(
-                                ' comment',
+                                '${SocialCubit.get(context).commentNumber[index]}',
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
                             ],
@@ -316,7 +316,9 @@ class FeedsScreen extends StatelessWidget {
                     ),
                     onTap: () {
                       SocialCubit.get(context)
-                          .likePost(SocialCubit.get(context).postsId[index]);
+                          .likePost(SocialCubit.get(context).postsId[index]).then((value) {
+                            SocialCubit.get(context).getPosts();
+                      });
                     },
                   ),
                 ],

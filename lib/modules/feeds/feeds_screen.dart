@@ -278,9 +278,18 @@ class FeedsScreen extends StatelessWidget {
                         ],
                       ),
                       onTap: () {
-                        SocialCubit.get(context).getAllComment("id").then((value){
+                        SocialCubit.get(context).getAllComment("${model.idPost}").then((value){
                           Future.delayed(Duration(microseconds: 1000)).then((value) {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CommentScreen()));
+                            bool? value;
+                            if(model.uId==uId){
+                              value=true;
+                              print(value);
+                            }else{
+                              value=false;
+                              print(value);
+
+                            }
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CommentScreen(value,model.idPost)));
 
                           });
 

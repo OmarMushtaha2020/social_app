@@ -250,13 +250,17 @@ class SocialCubit extends Cubit<SocialStates> {
       dateTime: dateTime,
       text: text,
       postImage: postImage ?? '',
+      idPost: ""
     );
 
     FirebaseFirestore.instance
         .collection('posts')
         .add(model.toMap())
         .then((value) {
-      emit(SocialCreatePostSuccessState());
+FirebaseFirestore.instance.collection("posts").doc(value.id).update({"idPost":value.id}).then((value){
+  emit(SocialCreatePostSuccessState());
+
+});
     }).catchError((error) {
       emit(SocialCreatePostErrorState());
     });
@@ -330,14 +334,17 @@ class SocialCubit extends Cubit<SocialStates> {
   List<CommentModel> commentModel = [];
 
  Future<void> getAllComment(String id) async {
-    commentModel=[];
-    emit(SocialClearCommentSuccessState());
-    FirebaseFirestore.instance.collection("posts").doc("x8RdJOMJKqh64ug5Zj2K").collection("comment").get().then((value) {
-value.docs.forEach((element) {
-  commentModel.add(CommentModel.fromJson(element.data()));
+   commentModel=[];
+emit(SocialClearCommentSuccessState());
+   FirebaseFirestore.instance.collection("posts").doc(id).collection("comment").get().then((value) {
+      print("the length is ${value.docs.length}");
+      value.docs.forEach((element) {
+commentModel.add(CommentModel.fromJson(element.data()));
+print(commentModel.length);
+  emit(SocialGetCommentSuccessState());
 
 });
-emit(SocialGetCommentSuccessState());
+      emit(SocialGetCommentSuccessState());
     }).catchError((error){
       emit(SocialGetCommentErrorState());
     });
@@ -354,6 +361,7 @@ emit(SocialGetCommentSuccessState());
       name: userModel!.name,
       uId: userModel!.uId,
       dateTime: dateTime,
+      image: image,
       text: text,
     );
 
@@ -364,7 +372,7 @@ emit(SocialGetCommentSuccessState());
 
         .add(model.toMap())
         .then((value) {
-      getAllComment("x8RdJOMJKqh64ug5Zj2K");
+      getAllComment("${postId}");
       emit(SocialCreateCommentSuccessState());
     }).catchError((error) {
       emit(SocialCreateCommentErrorState());
